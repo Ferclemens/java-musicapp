@@ -1,4 +1,4 @@
-package com.musicapp.musicapp.dominio;
+package com.musicapp.musicapp.entity;
 
 import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
