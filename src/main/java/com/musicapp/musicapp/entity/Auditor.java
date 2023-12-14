@@ -1,17 +1,13 @@
 package com.musicapp.musicapp.entity;
 
 import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 @MappedSuperclass // Supperclass para todas las entidades
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Auditor {
     private LocalDateTime creadoEn;
     private String creadoPor;

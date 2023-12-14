@@ -1,12 +1,10 @@
 package com.musicapp.musicapp.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,8 +13,7 @@ import java.util.UUID;
 @Table(name = "Listas")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class ListaDeReproduccion extends Auditor {
     @Id
     @UuidGenerator
