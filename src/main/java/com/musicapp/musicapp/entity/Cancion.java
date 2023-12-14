@@ -1,10 +1,7 @@
 package com.musicapp.musicapp.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.ArrayList;
@@ -14,8 +11,7 @@ import java.util.UUID;
 @Table(name = "Cancion")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Cancion {
     @Id
     @UuidGenerator

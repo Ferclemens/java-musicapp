@@ -1,12 +1,10 @@
 package com.musicapp.musicapp.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,8 +12,10 @@ import java.util.UUID;
 @Table(name = "Artista")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+//https://projectlombok.org/features/Data
+//@Getter
+//@Setter
+@Data
 public class Artista {
     @Id
 //  https://www.baeldung.com/java-hibernate-uuid-primary-key
