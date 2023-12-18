@@ -10,6 +10,4 @@ import java.util.List;
 @Data
 public class ArtistaDto {
     private String nombre;
-    private List<CancionDto> cancionesDto = new ArrayList<>();
-
 }

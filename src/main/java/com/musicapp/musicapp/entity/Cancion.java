@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Cancion {
     @Id
     @UuidGenerator
+    @Column(name = "cancion_id")
     private UUID id;
     //@Column(nullable = false)
     private String nombre;
@@ -29,7 +30,7 @@ public class Cancion {
     private Artista artista;
     private String album;
     @ManyToMany
-    @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "cancion_nombre"),
+    @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "cancion_id"),
     inverseJoinColumns = @JoinColumn(name = "lista_id"))
     private List<ListaDeReproduccion> listas = new ArrayList<>();
 

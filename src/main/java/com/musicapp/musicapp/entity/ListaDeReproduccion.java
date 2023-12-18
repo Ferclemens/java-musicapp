@@ -17,6 +17,7 @@ import java.util.UUID;
 public class ListaDeReproduccion extends Auditor {
     @Id
     @UuidGenerator
+    @Column(name = "lista_id")
     private UUID id;
     //@Column(nullable = false)
     private String nombre;
@@ -25,7 +26,7 @@ public class ListaDeReproduccion extends Auditor {
     private Usuario usuario;
     @ManyToMany
     @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "lista_id"),
-    inverseJoinColumns = @JoinColumn(name = "cancion_nombre"))
+    inverseJoinColumns = @JoinColumn(name = "cancion_id"))
     private List<Cancion> canciones = new ArrayList<>();
 
 }

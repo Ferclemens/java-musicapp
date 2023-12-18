@@ -7,5 +7,5 @@ import com.musicapp.musicapp.entity.Usuario;
 import java.util.List;
 
 public interface ListaDeReproduccionService {
-    List<ListaDeReproduccion> crearListasDeReproduccion(List<ListaDeReproduccionDto> listaDeReproduccionDto, Usuario usuario);
+    void crearListasDeReproduccion(List<ListaDeReproduccionDto> listaDeReproduccionDto, Usuario usuario);
 }
