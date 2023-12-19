@@ -9,6 +9,5 @@ import java.util.List;
 @Data
 public class ListaDeReproduccionDto {
     private String nombre;
-    private Usuario usuario;
     private List<CancionDto> cancionesDto;
 }

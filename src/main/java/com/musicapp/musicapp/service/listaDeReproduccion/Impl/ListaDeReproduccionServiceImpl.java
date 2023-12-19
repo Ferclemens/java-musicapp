@@ -39,4 +39,11 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
         listaDeReproduccionRepository.saveAll(usuario.getListaDeReproduccion());
 
     }
+
+    @Override
+    public boolean eliminarListas(List<ListaDeReproduccion> listas) {
+        listaDeReproduccionRepository.deleteAll(listas);
+        return Boolean.TRUE;
+    }
+
 }
