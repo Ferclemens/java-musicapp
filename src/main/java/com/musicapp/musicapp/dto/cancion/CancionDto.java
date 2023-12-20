@@ -14,8 +14,8 @@ public class CancionDto {
     private String nombre;
     private int ranking;
     private Double duracion;
-    private GeneroDto generoDto;
-    private ArtistaDto artistaDto;
+    private String genero;
+    private String artista;
     private String album;
     private List<ListaDeReproduccion> listasDeReproduccion;
 }

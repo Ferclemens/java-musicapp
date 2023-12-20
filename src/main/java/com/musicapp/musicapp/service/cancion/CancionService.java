@@ -11,4 +11,5 @@ import java.util.List;
 
 public interface CancionService {
     List<Cancion> crearCanciones(List<CancionDto> cancionesDtos, List<Cancion> canciones);
+    List<CancionDto> obtenerTodasLasCanciones(String nombre, String genero, String artista, String album);
 }

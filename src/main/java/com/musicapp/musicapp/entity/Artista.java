@@ -13,9 +13,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 //https://projectlombok.org/features/Data
-//@Getter
-//@Setter
-@Data
+//@Data
+@Getter
+@Setter
 public class Artista {
     @Id
 //  https://www.baeldung.com/java-hibernate-uuid-primary-key

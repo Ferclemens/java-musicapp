@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 public class ArtistaMapper {
-    public static Artista mapToArtista(ArtistaDto artistaDto, Artista artista){
-        artista.setNombre(artistaDto.getNombre());
+    public static Artista mapToArtista(String artistaDtoNombre, Artista artista){
+        artista.setNombre(artistaDtoNombre);
         return artista;
     }
     public static ArtistaDto mapToArtistaDto(Artista artista, ArtistaDto artistaDto){

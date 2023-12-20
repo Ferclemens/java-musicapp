@@ -1,13 +1,11 @@
-package com.musicapp.musicapp.controller.Usuario;
+package com.musicapp.musicapp.controller.usuario;
 
 import com.musicapp.musicapp.constantes.ConstantesUtils;
 import com.musicapp.musicapp.dto.respuesta.RespuestaDto;
 import com.musicapp.musicapp.dto.usuario.UsuarioDto;
-import com.musicapp.musicapp.entity.Usuario;
 import com.musicapp.musicapp.service.usuario.UsuarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

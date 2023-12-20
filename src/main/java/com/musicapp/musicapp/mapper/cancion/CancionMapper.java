@@ -27,6 +27,8 @@ public class CancionMapper {
     public static CancionDto mapToCancionDto(Cancion cancion, CancionDto cancionDto){
         cancionDto.setNombre(cancion.getNombre());
         cancionDto.setRanking(cancion.getRanking());
+        cancionDto.setGenero(cancion.getGenero().getNombre());
+        cancionDto.setArtista(cancion.getArtista().getNombre());
         cancionDto.setDuracion(cancion.getDuracion());
         cancionDto.setAlbum(cancion.getAlbum());
         return cancionDto;

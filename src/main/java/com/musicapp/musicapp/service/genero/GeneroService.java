@@ -4,5 +4,5 @@ import com.musicapp.musicapp.dto.genero.GeneroDto;
 import com.musicapp.musicapp.entity.Genero;
 
 public interface GeneroService {
-    Genero crearGenero(GeneroDto generoDto, Genero genero);
+    Genero crearGenero(String generoDto, Genero genero);
 }

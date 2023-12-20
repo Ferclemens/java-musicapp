@@ -8,6 +8,7 @@ import com.musicapp.musicapp.service.genero.GeneroService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -15,10 +16,29 @@ import java.util.UUID;
 public class GeneroServiceImpl implements GeneroService {
     private final GeneroRepository generoRepository;
     @Override
-    public Genero crearGenero(GeneroDto generoDto, Genero genero) {
-        Genero generoCreado = GeneroMapper.mapToGenero(generoDto, genero);
+    public Genero crearGenero(String generoDto, Genero genero) {
+        Genero generoCreado = new Genero();
+        generoCreado = GeneroMapper.mapToGenero(generoDto, genero);
         generoCreado.setId(UUID.randomUUID());
         generoRepository.save(generoCreado);
         return generoCreado;
+
+//        Genero generoCreado = new Genero();
+//        List<Genero> listaDeGeneros = generoRepository.findAll();
+//        if (listaDeGeneros.isEmpty()){
+//            generoCreado = GeneroMapper.mapToGenero(generoDto, genero);
+//            generoCreado.setId(UUID.randomUUID());
+//        } else {
+//            for (Genero generoDB: listaDeGeneros) {
+//                if(generoDB.getNombre() == generoDto.getNombre()){
+//                    generoCreado = generoDB;
+//                } else {
+//                    generoCreado = GeneroMapper.mapToGenero(generoDto, genero);
+//                    generoCreado.setId(generoDB.getId());
+//                }
+//            }
+//        }
+//        generoRepository.save(generoCreado);
+//        return generoCreado;
     }
 }

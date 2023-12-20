@@ -11,7 +11,9 @@ import java.util.UUID;
 @Table(name = "Genero")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+//@Data
+@Getter
+@Setter
 public class Genero {
     @Id
     @UuidGenerator
