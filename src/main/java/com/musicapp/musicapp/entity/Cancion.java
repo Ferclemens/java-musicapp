@@ -11,10 +11,14 @@ import java.util.UUID;
 @Table(name = "Cancion")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+//@Data
+//https://stackoverflow.com/questions/40266770/spring-jpa-bi-directional-cannot-evaluate-tostring
+@Setter
+@Getter
 public class Cancion {
     @Id
     @UuidGenerator
+    @Column(name = "cancion_id")
     private UUID id;
     //@Column(nullable = false)
     private String nombre;
@@ -22,14 +26,14 @@ public class Cancion {
     //@Column(nullable = false)
     private Double duracion;
     //@Column(nullable = false)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     private Genero genero;
     //@Column(nullable = false)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     private Artista artista;
     private String album;
-    @ManyToMany
-    @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "cancion_nombre"),
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
+    @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "cancion_id"),
     inverseJoinColumns = @JoinColumn(name = "lista_id"))
     private List<ListaDeReproduccion> listas = new ArrayList<>();
 

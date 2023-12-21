@@ -10,5 +10,4 @@ import java.util.List;
 @Data
 public class GeneroDto {
     private String nombre;
-    private List<CancionDto> cancionesDto = new ArrayList<>();
 }

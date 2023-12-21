@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface ListaDeReproduccionRepository extends JpaRepository<ListaDeReproduccion, UUID> {
+
+    ListaDeReproduccion findByNombreStartingWith(String nombre);
 }

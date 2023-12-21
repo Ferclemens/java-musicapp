@@ -11,13 +11,15 @@ import java.util.UUID;
 @Table(name = "Genero")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+//@Data
+@Getter
+@Setter
 public class Genero {
     @Id
     @UuidGenerator
     private UUID id;
     //@Column(nullable = false)
     private String nombre;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "genero", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "genero", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.ALL})
     private List<Cancion> canciones = new ArrayList<>();
 }
