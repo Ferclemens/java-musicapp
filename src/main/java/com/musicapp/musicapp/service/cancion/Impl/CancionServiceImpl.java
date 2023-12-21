@@ -10,6 +10,7 @@ import com.musicapp.musicapp.mapper.listaDeReproduccion.ListaDeReproduccionMappe
 import com.musicapp.musicapp.repository.artista.ArtistaRepository;
 import com.musicapp.musicapp.repository.cancion.CancionRepository;
 import com.musicapp.musicapp.repository.genero.GeneroRepository;
+import com.musicapp.musicapp.repository.listaDeReproduccion.ListaDeReproduccionRepository;
 import com.musicapp.musicapp.service.artista.ArtistaService;
 import com.musicapp.musicapp.service.cancion.CancionService;
 import com.musicapp.musicapp.service.genero.GeneroService;
@@ -28,8 +29,7 @@ public class CancionServiceImpl implements CancionService {
     private final CancionRepository cancionRepository;
     private final ArtistaService artistaService;
     private final GeneroService generoService;
-    private final GeneroRepository generoRepository;
-    private final ArtistaRepository artistaRepository;
+    private final ListaDeReproduccionRepository listaDeReproduccionRepository;
 
     @Override
     public List<Cancion> crearCanciones(List<CancionDto> cancionesDtos, List<Cancion> canciones){
@@ -77,5 +77,13 @@ public class CancionServiceImpl implements CancionService {
             return CancionMapper.mapToCancionesDto(listaCancionesMismoArtistas, new ArrayList<>());
         }
         return CancionMapper.mapToCancionesDto(cancionRepository.findAll(), new ArrayList<>());
+    }
+
+    @Override
+    public List<CancionDto> obtenerCancionesDeListaDeReproduccion(UUID idListaDeReproduccion) {
+        ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
+                .orElseThrow(()-> new RuntimeException("No se encuentra lista de reproduccion con id " + idListaDeReproduccion));
+        List<CancionDto> cancionesDto = CancionMapper.mapToCancionesDto(lista.getCanciones(), new ArrayList<>());
+        return cancionesDto;
     }
 }

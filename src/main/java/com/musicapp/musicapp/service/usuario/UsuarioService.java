@@ -10,4 +10,5 @@ public interface UsuarioService {
     UsuarioConDetalleListasDto obtenerUsuarioPorId(UUID idUsuario);
 
     boolean eliminarUsuarioPorId(UUID idUsuario);
+
 }
