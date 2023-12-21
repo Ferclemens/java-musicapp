@@ -25,6 +25,6 @@ public class Artista {
     private UUID id;
     //@Column(nullable = false)
     private String nombre;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "artista", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "artista", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     private List<Cancion> canciones = new ArrayList<>();
 }

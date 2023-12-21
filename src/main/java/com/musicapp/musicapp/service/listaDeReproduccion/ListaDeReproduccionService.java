@@ -9,4 +9,6 @@ import java.util.List;
 public interface ListaDeReproduccionService {
     void crearListasDeReproduccion(List<ListaDeReproduccionDto> listaDeReproduccionDto, Usuario usuario);
     boolean eliminarListas(List<ListaDeReproduccion> listas);
+
+    List<ListaDeReproduccionDto> obtenerListasDeReproduccion(String nombre);
 }

@@ -13,6 +13,7 @@ import com.musicapp.musicapp.service.cancion.CancionService;
 import com.musicapp.musicapp.service.listaDeReproduccion.ListaDeReproduccionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -46,4 +47,41 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
         return Boolean.TRUE;
     }
 
+    @Override
+    public List<ListaDeReproduccionDto> obtenerListasDeReproduccion(String nombre) {
+        List<ListaDeReproduccion> listas = listaDeReproduccionRepository.findAll();
+        List<ListaDeReproduccionDto> listasDto = new ArrayList<>();
+        if (!ObjectUtils.isEmpty(nombre)){
+            for (ListaDeReproduccion lista : listas) {
+                if (lista.getNombre().equals(nombre)) {
+                    ListaDeReproduccionDto listaDto = ListaDeReproduccionMapper
+                            .mapToListaDeReproduccionDto(lista, new ListaDeReproduccionDto());
+                    listaDto.setCancionesDto(CancionMapper.mapToCancionesDto(lista.getCanciones(), new ArrayList<>()));
+                    listasDto.add(listaDto);
+                }
+            }
+        } else {
+            for (ListaDeReproduccion lista : listas) {
+                ListaDeReproduccionDto listaDto = ListaDeReproduccionMapper
+                        .mapToListaDeReproduccionDto(lista, new ListaDeReproduccionDto());
+                listaDto.setCancionesDto(CancionMapper.mapToCancionesDto(lista.getCanciones(), new ArrayList<>()));
+                listasDto.add(listaDto);
+            }
+        }
+        return listasDto;
+    }
 }
+
+//        List<ListaDeReproduccion> listas = listaDeReproduccionRepository.findAll();
+//        List<ListaDeReproduccion> listasParaMapper = new ArrayList<>();
+//        if (!ObjectUtils.isEmpty(nombre)) {
+//            for (ListaDeReproduccion lista : listas) {
+//                if (lista.getNombre().equals(nombre)) {
+//                    listasParaMapper.add(lista);
+//                }
+//            }
+//        } else {
+//            listasParaMapper = listas;
+//        }
+//        return ListaDeReproduccionMapper.mapToListasDeReproduccionDtos(listasParaMapper, new ArrayList<>());
+

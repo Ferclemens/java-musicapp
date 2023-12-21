@@ -20,6 +20,6 @@ public class Genero {
     private UUID id;
     //@Column(nullable = false)
     private String nombre;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "genero", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "genero", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.ALL})
     private List<Cancion> canciones = new ArrayList<>();
 }
