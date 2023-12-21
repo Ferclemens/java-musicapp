@@ -1,6 +1,8 @@
 package com.musicapp.musicapp.service.usuario.Impl;
 
+import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
+import com.musicapp.musicapp.dto.usuario.UsuarioConDetalleListasDto;
 import com.musicapp.musicapp.dto.usuario.UsuarioDto;
 import com.musicapp.musicapp.entity.Cancion;
 import com.musicapp.musicapp.entity.ListaDeReproduccion;
@@ -44,11 +46,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto obtenerUsuarioPorId(UUID idUsuario) {
+    public UsuarioConDetalleListasDto obtenerUsuarioPorId(UUID idUsuario) {
         Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("No se encontro usuario con ID: " + idUsuario));
 
-        UsuarioDto usuarioDto = UsuarioMapper.mapToUsuarioDto(usuario, new UsuarioDto());
+        UsuarioConDetalleListasDto usuarioDto = UsuarioMapper.mapToUsuarioConDetalleListasDto(usuario, new UsuarioConDetalleListasDto());
+        List<ListaDeReproduccionDetalleDto> detalleListasDto = new ArrayList<>();
+        for (ListaDeReproduccion lista: usuario.getListaDeReproduccion()) {
+            ListaDeReproduccionDetalleDto listaDto = ListaDeReproduccionMapper.mapToListaDeReproduccionDetalleDto(lista,new ListaDeReproduccionDetalleDto());
+            detalleListasDto.add(listaDto);
+        }
+        usuarioDto.setListaDeReproduccionDetalleDtos(detalleListasDto);
         return usuarioDto;
     }
 
