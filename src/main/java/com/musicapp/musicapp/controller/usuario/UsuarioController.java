@@ -1,6 +1,7 @@
 package com.musicapp.musicapp.controller.usuario;
 
 import com.musicapp.musicapp.constantes.ConstantesUtils;
+import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
 import com.musicapp.musicapp.dto.respuesta.RespuestaDto;
 import com.musicapp.musicapp.dto.usuario.UsuarioConDetalleListasDto;
 import com.musicapp.musicapp.dto.usuario.UsuarioDto;
@@ -22,6 +23,16 @@ public class UsuarioController {
     public ResponseEntity<RespuestaDto> crearUsuarioConListas(@RequestBody UsuarioDto usuarioDto){
         usuarioService.crearUsuarioConListas(usuarioDto);
 
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new RespuestaDto(ConstantesUtils.STATUS_201,ConstantesUtils.MESSAGE_201));
+    }
+    @PostMapping("/{idUsuario}")
+    public ResponseEntity<RespuestaDto> crearListaDeReproduccion(
+            @RequestBody ListaDeReproduccionDto listaDeReproduccionDto,
+            @PathVariable(name = "idUsuario") UUID idUsuario
+    ){
+        usuarioService.crearListaDeReproduccion(listaDeReproduccionDto, idUsuario);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new RespuestaDto(ConstantesUtils.STATUS_201,ConstantesUtils.MESSAGE_201));

@@ -17,4 +17,5 @@ public class CancionDto {
     private String genero;
     private String artista;
     private String album;
+    private List<ListaDeReproduccion> listasDeReproduccion;
 }

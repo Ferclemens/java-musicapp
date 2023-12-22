@@ -12,6 +12,7 @@ import com.musicapp.musicapp.mapper.listaDeReproduccion.ListaDeReproduccionMappe
 import com.musicapp.musicapp.mapper.usuario.UsuarioMapper;
 import com.musicapp.musicapp.repository.listaDeReproduccion.ListaDeReproduccionRepository;
 import com.musicapp.musicapp.repository.usuario.UsuarioRepository;
+import com.musicapp.musicapp.service.cancion.CancionService;
 import com.musicapp.musicapp.service.listaDeReproduccion.ListaDeReproduccionService;
 import com.musicapp.musicapp.service.usuario.UsuarioService;
 import jakarta.transaction.Transactional;
@@ -31,8 +32,9 @@ import java.util.UUID;
 public class UsuarioServiceImpl implements UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
-
+    private final ListaDeReproduccionRepository listaDeReproduccionRepository;
     private final ListaDeReproduccionService listaDeReproduccionService;
+    private final CancionService cancionService;
 
     @Override
     public void crearUsuarioConListas(UsuarioDto usuarioDto) {
@@ -42,9 +44,20 @@ public class UsuarioServiceImpl implements UsuarioService {
         nuevoUsuario.setCreadoEn(LocalDateTime.now());
         usuarioRepository.save(nuevoUsuario);
         listaDeReproduccionService.crearListasDeReproduccion(usuarioDto.getListaDeReproduccionDto(),nuevoUsuario);
-
     }
-
+    @Override
+    public void crearListaDeReproduccion(ListaDeReproduccionDto listaDeReproduccionDto, UUID idUsuario) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new RuntimeException("No se encontro el usuario con id " + idUsuario));
+        ListaDeReproduccion listaNueva = ListaDeReproduccionMapper.mapToListaDeReproduccion(listaDeReproduccionDto, new ListaDeReproduccion());
+        listaNueva.setId(UUID.randomUUID());
+        listaNueva.setCreadoPor("Admin");
+        listaNueva.setCreadoEn(LocalDateTime.now());
+        listaNueva.setUsuario(usuario);
+        List<Cancion> canciones = cancionService.crearCanciones(listaDeReproduccionDto.getCancionesDto(), new ArrayList<>());
+        listaNueva.setCanciones(canciones);
+        listaDeReproduccionRepository.save(listaNueva);
+    }
     @Override
     public UsuarioConDetalleListasDto obtenerUsuarioPorId(UUID idUsuario) {
         Usuario usuario = usuarioRepository.findById(idUsuario)

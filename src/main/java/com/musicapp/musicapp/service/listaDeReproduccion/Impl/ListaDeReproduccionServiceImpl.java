@@ -1,6 +1,5 @@
 package com.musicapp.musicapp.service.listaDeReproduccion.Impl;
 
-import com.musicapp.musicapp.dto.cancion.CancionDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
 import com.musicapp.musicapp.entity.Cancion;
@@ -8,20 +7,16 @@ import com.musicapp.musicapp.entity.ListaDeReproduccion;
 import com.musicapp.musicapp.entity.Usuario;
 import com.musicapp.musicapp.mapper.cancion.CancionMapper;
 import com.musicapp.musicapp.mapper.listaDeReproduccion.ListaDeReproduccionMapper;
-import com.musicapp.musicapp.repository.cancion.CancionRepository;
 import com.musicapp.musicapp.repository.listaDeReproduccion.ListaDeReproduccionRepository;
 import com.musicapp.musicapp.repository.usuario.UsuarioRepository;
 import com.musicapp.musicapp.service.cancion.CancionService;
 import com.musicapp.musicapp.service.listaDeReproduccion.ListaDeReproduccionService;
 import lombok.AllArgsConstructor;
-import org.hibernate.mapping.Index;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoField;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +26,7 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
     private final ListaDeReproduccionRepository listaDeReproduccionRepository;
     private final CancionService cancionService;
     private final UsuarioRepository usuarioRepository;
+
     @Override
     public void crearListasDeReproduccion(List<ListaDeReproduccionDto> listaDeReproduccionDto, Usuario usuario) {
         ListaDeReproduccionMapper.mapToListasDeReproduccion(listaDeReproduccionDto, usuario.getListaDeReproduccion());
