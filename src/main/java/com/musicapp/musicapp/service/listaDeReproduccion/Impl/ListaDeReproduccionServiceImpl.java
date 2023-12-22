@@ -118,4 +118,19 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
         }
         return Boolean.TRUE;
     }
+
+    @Override
+    public boolean eliminarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion) {
+        ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
+                .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
+        Cancion cancionAEliminar = cancionRepository.findById(idCancion)
+                .orElseThrow(()-> new RuntimeException("no se encontro cancion con id " + idCancion));
+        if(!ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAEliminar)){
+            lista.getCanciones().remove(cancionAEliminar);
+            listaDeReproduccionRepository.save(lista);
+        } else {
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
+    }
 }

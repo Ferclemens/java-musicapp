@@ -21,4 +21,6 @@ public interface ListaDeReproduccionService {
     boolean editarParametrosDeAcciones(UUID idListaDeReproduccion, ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto);
 
     boolean editarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion);
+
+    boolean eliminarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion);
 }
