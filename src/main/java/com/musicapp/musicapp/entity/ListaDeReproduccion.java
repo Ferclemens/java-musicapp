@@ -24,7 +24,7 @@ public class ListaDeReproduccion extends Auditor {
     //@Column(nullable = false)
     @ManyToOne
     private Usuario usuario;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "lista_id"),
     inverseJoinColumns = @JoinColumn(name = "cancion_id"))
     private List<Cancion> canciones = new ArrayList<>();

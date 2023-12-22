@@ -1,5 +1,6 @@
 package com.musicapp.musicapp.mapper.listaDeReproduccion;
 
+import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
 import com.musicapp.musicapp.entity.Cancion;
 import com.musicapp.musicapp.entity.ListaDeReproduccion;
@@ -25,6 +26,12 @@ public class ListaDeReproduccionMapper {
     public static ListaDeReproduccionDto mapToListaDeReproduccionDto(ListaDeReproduccion listaDeReproduccion, ListaDeReproduccionDto listaDeReproduccionDto){
         listaDeReproduccionDto.setNombre(listaDeReproduccion.getNombre());
         return listaDeReproduccionDto;
+    }
+    public static ListaDeReproduccionDetalleDto mapToListaDeReproduccionDetalleDto(ListaDeReproduccion listaDeReproduccion, ListaDeReproduccionDetalleDto listaDeReproduccionDetalleDto){
+        listaDeReproduccionDetalleDto.setId(listaDeReproduccion.getId());
+        listaDeReproduccionDetalleDto.setNombre(listaDeReproduccion.getNombre());
+        listaDeReproduccionDetalleDto.setCantidadDeCanciones(listaDeReproduccion.getCanciones().size());
+        return listaDeReproduccionDetalleDto;
     }
     public static List<ListaDeReproduccionDto> mapToListasDeReproduccionDtos(Collection<ListaDeReproduccion> listasDeReproduccion, Collection<ListaDeReproduccionDto> listasDeReproduccionDtos){
         for (ListaDeReproduccion lista: listasDeReproduccion) {

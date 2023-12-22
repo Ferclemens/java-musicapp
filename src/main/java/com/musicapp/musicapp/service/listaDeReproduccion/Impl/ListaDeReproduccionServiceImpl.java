@@ -1,14 +1,14 @@
 package com.musicapp.musicapp.service.listaDeReproduccion.Impl;
 
-import com.musicapp.musicapp.dto.cancion.CancionDto;
+import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
 import com.musicapp.musicapp.entity.Cancion;
 import com.musicapp.musicapp.entity.ListaDeReproduccion;
 import com.musicapp.musicapp.entity.Usuario;
 import com.musicapp.musicapp.mapper.cancion.CancionMapper;
 import com.musicapp.musicapp.mapper.listaDeReproduccion.ListaDeReproduccionMapper;
-import com.musicapp.musicapp.repository.cancion.CancionRepository;
 import com.musicapp.musicapp.repository.listaDeReproduccion.ListaDeReproduccionRepository;
+import com.musicapp.musicapp.repository.usuario.UsuarioRepository;
 import com.musicapp.musicapp.service.cancion.CancionService;
 import com.musicapp.musicapp.service.listaDeReproduccion.ListaDeReproduccionService;
 import lombok.AllArgsConstructor;
@@ -25,6 +25,8 @@ import java.util.UUID;
 public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionService {
     private final ListaDeReproduccionRepository listaDeReproduccionRepository;
     private final CancionService cancionService;
+    private final UsuarioRepository usuarioRepository;
+
     @Override
     public void crearListasDeReproduccion(List<ListaDeReproduccionDto> listaDeReproduccionDto, Usuario usuario) {
         ListaDeReproduccionMapper.mapToListasDeReproduccion(listaDeReproduccionDto, usuario.getListaDeReproduccion());
@@ -70,6 +72,21 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
         }
         return listasDto;
     }
+
+    @Override
+    public List<ListaDeReproduccionDetalleDto> obtenerListasDeUnUsuario(UUID idUsuario) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new RuntimeException("No existe usuario con id: " + idUsuario));
+        List<ListaDeReproduccion> listas = usuario.getListaDeReproduccion();
+//        //Ordenamiento de los resultados por fecha (milisegundos)
+//        Collections.sort(listas, (lista1, lista2) -> lista1.getCreadoEn().get(ChronoField.MILLI_OF_SECOND) - lista2.getCreadoEn().get(ChronoField.MILLI_OF_SECOND));
+        List<ListaDeReproduccionDetalleDto> listasDelUsuarioDto = new ArrayList<>();
+        for (ListaDeReproduccion lista: listas) {
+            ListaDeReproduccionDetalleDto listaDetalleDto = ListaDeReproduccionMapper.mapToListaDeReproduccionDetalleDto(lista, new ListaDeReproduccionDetalleDto());
+            listasDelUsuarioDto.add(listaDetalleDto);
+        }
+        return listasDelUsuarioDto;
+    }
 }
 
 //        List<ListaDeReproduccion> listas = listaDeReproduccionRepository.findAll();
@@ -85,3 +102,8 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
 //        }
 //        return ListaDeReproduccionMapper.mapToListasDeReproduccionDtos(listasParaMapper, new ArrayList<>());
 
+//for (ListaDeReproduccion lista: listas) {
+//        ListaDeReproduccionDto listaDto = ListaDeReproduccionMapper.mapToListaDeReproduccionDto(lista, new ListaDeReproduccionDto());
+//        listaDto.setCancionesDto(CancionMapper.mapToCancionesDto(lista.getCanciones(), new ArrayList<>()));
+//        listasDelUsuarioDto.add(listaDto);
+//        }
