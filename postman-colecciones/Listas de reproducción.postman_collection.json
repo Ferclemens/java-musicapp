@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/a25dd20e-4903-4d6e-8349-e56771b635cb/listas",
+					"raw": "http://localhost:8080/api/v1/listas-de-reproduccion/7063efd2-bf36-4f06-bc06-1f3ee0da1342/listas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -21,8 +21,8 @@
 					"path": [
 						"api",
 						"v1",
-						"listasDeReproduccion",
-						"a25dd20e-4903-4d6e-8349-e56771b635cb",
+						"listas-de-reproduccion",
+						"7063efd2-bf36-4f06-bc06-1f3ee0da1342",
 						"listas"
 					]
 				}
@@ -35,7 +35,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/7d01ec34-e308-4982-8c05-61a92a2e5883",
+					"raw": "http://localhost:8080/api/v1/listas-de-reproduccion/9248d515-4a95-4bca-8d05-f8e7a7afcd98",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -44,8 +44,8 @@
 					"path": [
 						"api",
 						"v1",
-						"listasDeReproduccion",
-						"7d01ec34-e308-4982-8c05-61a92a2e5883"
+						"listas-de-reproduccion",
+						"9248d515-4a95-4bca-8d05-f8e7a7afcd98"
 					]
 				}
 			},
@@ -66,7 +66,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/usuarios/54e947fe-c0f0-4e89-bfab-f76cfe544d58",
+					"raw": "http://localhost:8080/api/v1/usuarios/7063efd2-bf36-4f06-bc06-1f3ee0da1342",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -76,7 +76,7 @@
 						"api",
 						"v1",
 						"usuarios",
-						"54e947fe-c0f0-4e89-bfab-f76cfe544d58"
+						"7063efd2-bf36-4f06-bc06-1f3ee0da1342"
 					]
 				}
 			},
@@ -97,7 +97,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/usuario/a25dd20e-4903-4d6e-8349-e56771b635cb/lista/7d01ec34-e308-4982-8c05-61a92a2e5883",
+					"raw": "http://localhost:8080/api/v1/listas-de-reproduccion/usuario/ee97035a-49e3-47fc-88e6-8dd676105938/lista/2e1b4768-69a5-48b3-a1a9-c16a2e34facb",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -106,11 +106,11 @@
 					"path": [
 						"api",
 						"v1",
-						"listasDeReproduccion",
+						"listas-de-reproduccion",
 						"usuario",
-						"a25dd20e-4903-4d6e-8349-e56771b635cb",
+						"ee97035a-49e3-47fc-88e6-8dd676105938",
 						"lista",
-						"7d01ec34-e308-4982-8c05-61a92a2e5883"
+						"2e1b4768-69a5-48b3-a1a9-c16a2e34facb"
 					]
 				}
 			},
@@ -122,7 +122,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/usuario/a25dd20e-4903-4d6e-8349-e56771b635cb/lista/7d01ec34-e308-4982-8c05-61a92a2e5883/agregar-cancion/cfbd935d-9f73-4fd7-b85c-489afde2c26e",
+					"raw": "http://localhost:8080/api/v1/listas-de-reproduccion/usuario/a25dd20e-4903-4d6e-8349-e56771b635cb/lista/7d01ec34-e308-4982-8c05-61a92a2e5883/cancion/cfbd935d-9f73-4fd7-b85c-489afde2c26e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -131,12 +131,12 @@
 					"path": [
 						"api",
 						"v1",
-						"listasDeReproduccion",
+						"listas-de-reproduccion",
 						"usuario",
 						"a25dd20e-4903-4d6e-8349-e56771b635cb",
 						"lista",
 						"7d01ec34-e308-4982-8c05-61a92a2e5883",
-						"agregar-cancion",
+						"cancion",
 						"cfbd935d-9f73-4fd7-b85c-489afde2c26e"
 					]
 				}
@@ -149,7 +149,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/usuario/a25dd20e-4903-4d6e-8349-e56771b635cb/lista/7d01ec34-e308-4982-8c05-61a92a2e5883/eliminar-cancion/cfbd935d-9f73-4fd7-b85c-489afde2c26e",
+					"raw": "http://localhost:8080/api/v1/listas-de-reproduccion/usuario/a25dd20e-4903-4d6e-8349-e56771b635cb/lista/7d01ec34-e308-4982-8c05-61a92a2e5883/cancion/cfbd935d-9f73-4fd7-b85c-489afde2c26e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -158,12 +158,12 @@
 					"path": [
 						"api",
 						"v1",
-						"listasDeReproduccion",
+						"listas-de-reproduccion",
 						"usuario",
 						"a25dd20e-4903-4d6e-8349-e56771b635cb",
 						"lista",
 						"7d01ec34-e308-4982-8c05-61a92a2e5883",
-						"eliminar-cancion",
+						"cancion",
 						"cfbd935d-9f73-4fd7-b85c-489afde2c26e"
 					]
 				}

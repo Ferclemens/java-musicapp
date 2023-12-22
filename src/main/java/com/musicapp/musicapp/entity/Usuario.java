@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;
 import lombok.AllArgsConstructor;
@@ -23,9 +24,9 @@ public class Usuario extends Auditor {
     @Id
     @UuidGenerator
     private UUID id;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String nombre;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String usuario;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<ListaDeReproduccion> listaDeReproduccion = new ArrayList<>();

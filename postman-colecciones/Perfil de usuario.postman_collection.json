@@ -102,7 +102,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/usuarios/53e815b8-c1a2-476c-826a-fe797360a1f7",
+					"raw": "http://localhost:8080/api/v1/usuarios/7063efd2-bf36-4f06-bc06-1f3ee0da1342",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -112,7 +112,7 @@
 						"api",
 						"v1",
 						"usuarios",
-						"53e815b8-c1a2-476c-826a-fe797360a1f7"
+						"7063efd2-bf36-4f06-bc06-1f3ee0da1342"
 					]
 				}
 			},

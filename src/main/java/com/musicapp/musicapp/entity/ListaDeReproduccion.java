@@ -29,17 +29,16 @@ public class ListaDeReproduccion extends Auditor {
     @UuidGenerator
     @Column(name = "lista_id")
     private UUID id;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String nombre;
-    //@Column(nullable = false)
     @ManyToOne
     private Usuario usuario;
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "lista_id"),
     inverseJoinColumns = @JoinColumn(name = "cancion_id"))
     private List<Cancion> canciones = new ArrayList<>();
-    private boolean Publica;
-    private boolean Repetir;
-    private boolean Aleatorio;
+    private boolean publica;
+    private boolean repetir;
+    private boolean aleatorio;
 
 }

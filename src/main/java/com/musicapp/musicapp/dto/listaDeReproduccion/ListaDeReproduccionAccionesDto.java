@@ -1,10 +1,14 @@
 package com.musicapp.musicapp.dto.listaDeReproduccion;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
 public class ListaDeReproduccionAccionesDto {
-    private boolean Publica;
-    private boolean Repetir;
-    private boolean Aleatorio;
+    @NotNull(message = "El campo 'publica' no puede ser nulo")
+    private boolean publica;
+    @NotNull(message = "El campo 'repetir' no puede ser nulo")
+    private boolean repetir;
+    @NotNull(message = "El campo 'Aleatorio' no puede ser nulo")
+    private boolean aleatorio;
 }

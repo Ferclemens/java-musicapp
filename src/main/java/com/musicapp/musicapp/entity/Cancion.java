@@ -32,15 +32,13 @@ public class Cancion {
     @UuidGenerator
     @Column(name = "cancion_id")
     private UUID id;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String nombre;
     private int ranking;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private Double duracion;
-    //@Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     private Genero genero;
-    //@Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     private Artista artista;
     private String album;

@@ -6,6 +6,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
@@ -30,7 +31,7 @@ public class Artista {
 //  @GenericGenerator(name = "uuid-hibernate-generator", strategy = "org.hibernate.id.UUIDGenerator")
     @UuidGenerator
     private UUID id;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String nombre;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "artista", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     private List<Cancion> canciones = new ArrayList<>();
