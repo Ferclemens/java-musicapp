@@ -27,7 +27,7 @@ public class ArtistaController {
                 .body(artistas);
     }
     @GetMapping("/{idArtista}")
-    //Exploración y búsqueda punto 3
+    //Punto 3 de Exploración y búsqueda
     public ResponseEntity<ArtistaDto> obtenerArtistaPorId(@PathVariable(name = "idArtista")UUID idArtista){
         ArtistaDto artistaDto = artistaService.obtenerArtistaPorId(idArtista);
         return ResponseEntity

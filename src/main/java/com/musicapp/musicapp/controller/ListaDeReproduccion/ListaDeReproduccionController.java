@@ -24,6 +24,7 @@ public class ListaDeReproduccionController {
     ListaDeReproduccionService listaDeReproduccionService;
     CancionService cancionService;
     @GetMapping()
+    //Punto 4 de Exploración y búsqueda
     public ResponseEntity<List<ListaDeReproduccionDto>> obtenerListasDeReproduccion(@RequestParam(name = "nombre", required = false)String nombre){
          List<ListaDeReproduccionDto> listas = listaDeReproduccionService.obtenerListasDeReproduccion(nombre);
          return ResponseEntity
@@ -31,6 +32,7 @@ public class ListaDeReproduccionController {
                  .body(listas);
     }
     @GetMapping("/{idUsuario}/listas")
+    // punto 1 de listas de reproduccion
     public ResponseEntity<List<ListaDeReproduccionDetalleDto>> obtenerListasDeUnUsuario(@PathVariable(name = "idUsuario")UUID idUsuario){
         List<ListaDeReproduccionDetalleDto> listas = listaDeReproduccionService.obtenerListasDeUnUsuario(idUsuario);
         return ResponseEntity
@@ -38,6 +40,7 @@ public class ListaDeReproduccionController {
                 .body(listas);
     }
     @GetMapping("/{idListaDeReproduccion}")
+    // punto 2 de listas de reproduccion
     public ResponseEntity<List<CancionDto>> obtenerCancionesDeListaDeReproduccion(@PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion){
         List<CancionDto> canciones = cancionService.obtenerCancionesDeListaDeReproduccion(idListaDeReproduccion);
         return ResponseEntity
@@ -45,6 +48,7 @@ public class ListaDeReproduccionController {
                 .body(canciones);
     }
     @PutMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}")
+    //Punto 4 de listas de reproduccion
     public ResponseEntity<RespuestaDto> editarParametrosDeAcciones(
             @PathVariable(name = "idListaDeReproduccion")UUID idListaDeReproduccion,
             @PathVariable(name = "idUsuario")UUID idUsuario,
@@ -66,6 +70,7 @@ public class ListaDeReproduccionController {
         }
     }
     @PutMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}/agregar-cancion/{idCancion}")
+    // punto 5 de listas de reproduccion
     public ResponseEntity<RespuestaDto> agregarCancionEnListaDeReproduccion(
             @PathVariable(name = "idUsuario")UUID idUsuario,
             @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
@@ -86,7 +91,8 @@ public class ListaDeReproduccionController {
                     .body(new RespuestaDto(ConstantesUtils.STATUS_500,ConstantesUtils.MESSAGE_500));
         }
     }
-    @DeleteMapping("usuario/{idUsuario}/lista/{idListaDeReproduccion}/eliminar-cancion/{idCancion}")
+    @DeleteMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}/eliminar-cancion/{idCancion}")
+    // punto 5 de listas de reproduccion
     public ResponseEntity<RespuestaDto> eliminarCancionEnListaDeReproduccion(
             @PathVariable(name = "idUsuario")UUID idUsuario,
             @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
