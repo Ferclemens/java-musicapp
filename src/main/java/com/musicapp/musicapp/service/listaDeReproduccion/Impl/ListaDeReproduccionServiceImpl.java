@@ -102,6 +102,8 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
                 .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
         if (!ObjectUtils.isEmpty(usuario) && !ObjectUtils.isEmpty(lista)){
             ListaDeReproduccionMapper.mapToListaDeReproduccionAcciones(listaDeReproduccionAccionesDto,lista);
+            lista.setModificadoEn(LocalDateTime.now());
+            lista.setModificadoPor("Admin");
             listaDeReproduccionRepository.save(lista);
         } else {
             return Boolean.FALSE;
@@ -119,6 +121,8 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
                 .orElseThrow(()-> new RuntimeException("no se encontro cancion con id " + idCancion));
         if(!ObjectUtils.isEmpty(usuario) && !ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAAgregar)){
             lista.getCanciones().add(cancionAAgregar);
+            lista.setModificadoEn(LocalDateTime.now());
+            lista.setModificadoPor("Admin");
             listaDeReproduccionRepository.save(lista);
         } else {
             return Boolean.FALSE;
@@ -136,6 +140,8 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
                 .orElseThrow(()-> new RuntimeException("no se encontro cancion con id " + idCancion));
         if(!ObjectUtils.isEmpty(usuario) && !ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAEliminar)){
             lista.getCanciones().remove(cancionAEliminar);
+            lista.setModificadoEn(LocalDateTime.now());
+            lista.setModificadoPor("Admin");
             listaDeReproduccionRepository.save(lista);
         } else {
             return Boolean.FALSE;
