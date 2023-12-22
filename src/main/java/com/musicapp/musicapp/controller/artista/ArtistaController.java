@@ -1,8 +1,6 @@
 package com.musicapp.musicapp.controller.artista;
 
 import com.musicapp.musicapp.dto.artista.ArtistaDto;
-import com.musicapp.musicapp.entity.Artista;
-import com.musicapp.musicapp.repository.artista.ArtistaRepository;
 import com.musicapp.musicapp.service.artista.ArtistaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +27,7 @@ public class ArtistaController {
                 .body(artistas);
     }
     @GetMapping("/{idArtista}")
-    //Exploración y búsqueda punto 3
+    //Punto 3 de Exploración y búsqueda
     public ResponseEntity<ArtistaDto> obtenerArtistaPorId(@PathVariable(name = "idArtista")UUID idArtista){
         ArtistaDto artistaDto = artistaService.obtenerArtistaPorId(idArtista);
         return ResponseEntity

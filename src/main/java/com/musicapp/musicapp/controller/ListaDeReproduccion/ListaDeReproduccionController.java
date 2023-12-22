@@ -24,6 +24,7 @@ public class ListaDeReproduccionController {
     ListaDeReproduccionService listaDeReproduccionService;
     CancionService cancionService;
     @GetMapping()
+    //Punto 4 de Exploración y búsqueda
     public ResponseEntity<List<ListaDeReproduccionDto>> obtenerListasDeReproduccion(@RequestParam(name = "nombre", required = false)String nombre){
          List<ListaDeReproduccionDto> listas = listaDeReproduccionService.obtenerListasDeReproduccion(nombre);
          return ResponseEntity
@@ -31,6 +32,7 @@ public class ListaDeReproduccionController {
                  .body(listas);
     }
     @GetMapping("/{idUsuario}/listas")
+    // punto 1 de listas de reproduccion
     public ResponseEntity<List<ListaDeReproduccionDetalleDto>> obtenerListasDeUnUsuario(@PathVariable(name = "idUsuario")UUID idUsuario){
         List<ListaDeReproduccionDetalleDto> listas = listaDeReproduccionService.obtenerListasDeUnUsuario(idUsuario);
         return ResponseEntity
@@ -38,18 +40,22 @@ public class ListaDeReproduccionController {
                 .body(listas);
     }
     @GetMapping("/{idListaDeReproduccion}")
+    // punto 2 de listas de reproduccion
     public ResponseEntity<List<CancionDto>> obtenerCancionesDeListaDeReproduccion(@PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion){
         List<CancionDto> canciones = cancionService.obtenerCancionesDeListaDeReproduccion(idListaDeReproduccion);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(canciones);
     }
-    @PutMapping("/{idListaDeReproduccion}")
+    @PutMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}")
+    //Punto 4 de listas de reproduccion
     public ResponseEntity<RespuestaDto> editarParametrosDeAcciones(
             @PathVariable(name = "idListaDeReproduccion")UUID idListaDeReproduccion,
+            @PathVariable(name = "idUsuario")UUID idUsuario,
             @RequestBody ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto
             ){
         boolean fueEditado = listaDeReproduccionService.editarParametrosDeAcciones(
+                idUsuario,
                 idListaDeReproduccion,
                 listaDeReproduccionAccionesDto
         );
@@ -59,17 +65,19 @@ public class ListaDeReproduccionController {
                     .body(new RespuestaDto(ConstantesUtils.STATUS_200,ConstantesUtils.MESSAGE_200));
         } else {
             return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(new RespuestaDto(ConstantesUtils.STATUS_500,ConstantesUtils.MESSAGE_500));
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new RespuestaDto(ConstantesUtils.STATUS_500, ConstantesUtils.MESSAGE_500));
         }
-
     }
-    @PutMapping("/{idListaDeReproduccion}/agregar-cancion/{idCancion}")
-    public ResponseEntity<RespuestaDto> editarCancionEnListaDeReproduccion(
+    @PutMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}/agregar-cancion/{idCancion}")
+    // punto 5 de listas de reproduccion
+    public ResponseEntity<RespuestaDto> agregarCancionEnListaDeReproduccion(
+            @PathVariable(name = "idUsuario")UUID idUsuario,
             @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
             @PathVariable(name = "idCancion") UUID idCancion
     ){
-        boolean fueEditada = listaDeReproduccionService.editarCancionEnListaDeReproduccion(
+        boolean fueEditada = listaDeReproduccionService.agregarCancionEnListaDeReproduccion(
+                idUsuario,
                 idListaDeReproduccion,
                 idCancion
         );
@@ -82,14 +90,16 @@ public class ListaDeReproduccionController {
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new RespuestaDto(ConstantesUtils.STATUS_500,ConstantesUtils.MESSAGE_500));
         }
-
     }
-    @DeleteMapping("/{idListaDeReproduccion}/eliminar-cancion/{idCancion}")
+    @DeleteMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}/eliminar-cancion/{idCancion}")
+    // punto 5 de listas de reproduccion
     public ResponseEntity<RespuestaDto> eliminarCancionEnListaDeReproduccion(
+            @PathVariable(name = "idUsuario")UUID idUsuario,
             @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
             @PathVariable(name = "idCancion") UUID idCancion
     ){
         boolean fueEliminada = listaDeReproduccionService.eliminarCancionEnListaDeReproduccion(
+                idUsuario,
                 idListaDeReproduccion,
                 idCancion
         );

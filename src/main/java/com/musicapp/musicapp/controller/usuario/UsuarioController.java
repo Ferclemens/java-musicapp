@@ -20,6 +20,7 @@ import java.util.UUID;
 public class UsuarioController {
     private final UsuarioService usuarioService;
     @PostMapping
+    // punto 1 de perfil de usuario
     public ResponseEntity<RespuestaDto> crearUsuarioConListas(@RequestBody UsuarioDto usuarioDto){
         usuarioService.crearUsuarioConListas(usuarioDto);
 
@@ -28,6 +29,7 @@ public class UsuarioController {
                 .body(new RespuestaDto(ConstantesUtils.STATUS_201,ConstantesUtils.MESSAGE_201));
     }
     @PostMapping("/{idUsuario}")
+    // punto 3 de listas de reproduccion
     public ResponseEntity<RespuestaDto> crearListaDeReproduccion(
             @RequestBody ListaDeReproduccionDto listaDeReproduccionDto,
             @PathVariable(name = "idUsuario") UUID idUsuario
@@ -38,24 +40,11 @@ public class UsuarioController {
                 .body(new RespuestaDto(ConstantesUtils.STATUS_201,ConstantesUtils.MESSAGE_201));
     }
     @GetMapping("/{idUsuario}")
+    // punto 2 de perfil de usuario
     public ResponseEntity<UsuarioConDetalleListasDto> obtenerUsuarioPorId(@PathVariable(name = "idUsuario")UUID idUsuario){
         UsuarioConDetalleListasDto usuarioDto = usuarioService.obtenerUsuarioPorId(idUsuario);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(usuarioDto);
-    }
-
-    @DeleteMapping("/{idUsuario}")
-    public ResponseEntity<RespuestaDto> eliminarUsuarioPorId(@PathVariable(name = "idUsuario")UUID idUsuario){
-        boolean usuarioEliminado = usuarioService.eliminarUsuarioPorId(idUsuario);
-        if(usuarioEliminado){
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(new RespuestaDto(ConstantesUtils.STATUS_200, ConstantesUtils.MESSAGE_200));
-        } else {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new RespuestaDto(ConstantesUtils.STATUS_500, ConstantesUtils.MESSAGE_500));
-        }
     }
 }

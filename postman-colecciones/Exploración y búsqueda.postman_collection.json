@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "adfadce8-4e04-4e00-b014-319bf3f565f6",
+		"name": "Exploración y búsqueda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17727759"
+	},
+	"item": [
+		{
+			"name": "Canciones con opción de parametros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/canciones?artista=Almafuerte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"canciones"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Verdis Quo",
+							"disabled": true
+						},
+						{
+							"key": "genero",
+							"value": "Funk",
+							"disabled": true
+						},
+						{
+							"key": "artista",
+							"value": "Almafuerte"
+						},
+						{
+							"key": "album",
+							"value": "Víctimas del vaciamiento",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Artista por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/artistas/2d38a34d-8b8f-4b35-9f27-ef1d8851a8c7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"artistas",
+						"2d38a34d-8b8f-4b35-9f27-ef1d8851a8c7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListasDeReproducción con opcion de parametro nombre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/listasDeReproduccion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"listasDeReproduccion"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Chill",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

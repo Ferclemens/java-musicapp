@@ -10,6 +10,5 @@ public interface UsuarioService {
     void crearUsuarioConListas(UsuarioDto usuarioDto);
     void crearListaDeReproduccion(ListaDeReproduccionDto listaDeReproduccionDto, UUID idUsuario);
     UsuarioConDetalleListasDto obtenerUsuarioPorId(UUID idUsuario);
-    boolean eliminarUsuarioPorId(UUID idUsuario);
 
 }

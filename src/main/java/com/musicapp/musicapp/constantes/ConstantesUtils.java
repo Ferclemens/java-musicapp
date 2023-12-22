@@ -1,7 +1,5 @@
 package com.musicapp.musicapp.constantes;
 
-import lombok.NoArgsConstructor;
-
 public class ConstantesUtils {
     public ConstantesUtils(){};
     public static final String STATUS_201 = "201";

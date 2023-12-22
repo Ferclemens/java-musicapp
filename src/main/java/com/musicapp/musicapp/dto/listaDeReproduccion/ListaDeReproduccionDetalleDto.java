@@ -1,9 +1,7 @@
 package com.musicapp.musicapp.dto.listaDeReproduccion;
 
-import com.musicapp.musicapp.dto.cancion.CancionDto;
-import lombok.Data;
 
-import java.util.List;
+import lombok.Data;
 import java.util.UUID;
 
 @Data

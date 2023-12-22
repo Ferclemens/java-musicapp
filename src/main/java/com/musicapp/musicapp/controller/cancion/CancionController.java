@@ -1,7 +1,6 @@
 package com.musicapp.musicapp.controller.cancion;
 
 import com.musicapp.musicapp.dto.cancion.CancionDto;
-import com.musicapp.musicapp.entity.Genero;
 import com.musicapp.musicapp.service.cancion.CancionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +19,7 @@ import java.util.List;
 public class CancionController {
     private final CancionService cancionService;
     @GetMapping()
-    //Exploración y búsqueda puntos 1 y 2
+    //Puntos 1 y 2 de Exploración y búsqueda
     public ResponseEntity<List<CancionDto>> obtenerTodasLasCanciones(
             @RequestParam(name = "nombre", required = false) String nombre,
             @RequestParam(name = "genero", required = false) String genero,
