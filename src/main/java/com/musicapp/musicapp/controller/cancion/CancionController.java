@@ -1,7 +1,6 @@
 package com.musicapp.musicapp.controller.cancion;
 
 import com.musicapp.musicapp.dto.cancion.CancionDto;
-import com.musicapp.musicapp.entity.Genero;
 import com.musicapp.musicapp.service.cancion.CancionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

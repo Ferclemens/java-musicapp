@@ -1,7 +1,9 @@
 package com.musicapp.musicapp.entity;
 
 import jakarta.persistence.MappedSuperclass;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 @MappedSuperclass // Supperclass para todas las entidades

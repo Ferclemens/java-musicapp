@@ -3,7 +3,6 @@ package com.musicapp.musicapp.mapper.listaDeReproduccion;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionAccionesDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
-import com.musicapp.musicapp.entity.Cancion;
 import com.musicapp.musicapp.entity.ListaDeReproduccion;
 import lombok.Data;
 

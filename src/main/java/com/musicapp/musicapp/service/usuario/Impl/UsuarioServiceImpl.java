@@ -7,7 +7,6 @@ import com.musicapp.musicapp.dto.usuario.UsuarioDto;
 import com.musicapp.musicapp.entity.Cancion;
 import com.musicapp.musicapp.entity.ListaDeReproduccion;
 import com.musicapp.musicapp.entity.Usuario;
-import com.musicapp.musicapp.mapper.cancion.CancionMapper;
 import com.musicapp.musicapp.mapper.listaDeReproduccion.ListaDeReproduccionMapper;
 import com.musicapp.musicapp.mapper.usuario.UsuarioMapper;
 import com.musicapp.musicapp.repository.listaDeReproduccion.ListaDeReproduccionRepository;
@@ -17,14 +16,11 @@ import com.musicapp.musicapp.service.listaDeReproduccion.ListaDeReproduccionServ
 import com.musicapp.musicapp.service.usuario.UsuarioService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 @Transactional
 @AllArgsConstructor

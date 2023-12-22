@@ -1,6 +1,5 @@
 package com.musicapp.musicapp.service.listaDeReproduccion;
 
-import com.musicapp.musicapp.dto.cancion.CancionDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionAccionesDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
