@@ -2,10 +2,10 @@ package com.musicapp.musicapp.controller.ListaDeReproduccion;
 
 import com.musicapp.musicapp.constantes.ConstantesUtils;
 import com.musicapp.musicapp.dto.cancion.CancionDto;
+import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionAccionesDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
 import com.musicapp.musicapp.dto.respuesta.RespuestaDto;
-import com.musicapp.musicapp.entity.ListaDeReproduccion;
 import com.musicapp.musicapp.service.cancion.CancionService;
 import com.musicapp.musicapp.service.listaDeReproduccion.ListaDeReproduccionService;
 import lombok.AllArgsConstructor;
@@ -43,5 +43,25 @@ public class ListaDeReproduccionController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(canciones);
+    }
+    @PutMapping("/{idListaDeReproduccion}")
+    public ResponseEntity<RespuestaDto> editarParametrosDeAcciones(
+            @PathVariable(name = "idListaDeReproduccion")UUID idListaDeReproduccion,
+            @RequestBody ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto
+            ){
+        boolean fueEditado = listaDeReproduccionService.editarParametrosDeAcciones(
+                idListaDeReproduccion,
+                listaDeReproduccionAccionesDto
+        );
+        if (fueEditado){
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(new RespuestaDto(ConstantesUtils.STATUS_200,ConstantesUtils.MESSAGE_200));
+        } else {
+            return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new RespuestaDto(ConstantesUtils.STATUS_500,ConstantesUtils.MESSAGE_500));
+        }
+
     }
 }
