@@ -44,12 +44,14 @@ public class ListaDeReproduccionController {
                 .status(HttpStatus.OK)
                 .body(canciones);
     }
-    @PutMapping("/{idListaDeReproduccion}")
+    @PutMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}")
     public ResponseEntity<RespuestaDto> editarParametrosDeAcciones(
             @PathVariable(name = "idListaDeReproduccion")UUID idListaDeReproduccion,
+            @PathVariable(name = "idUsuario")UUID idUsuario,
             @RequestBody ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto
             ){
         boolean fueEditado = listaDeReproduccionService.editarParametrosDeAcciones(
+                idUsuario,
                 idListaDeReproduccion,
                 listaDeReproduccionAccionesDto
         );
@@ -59,17 +61,18 @@ public class ListaDeReproduccionController {
                     .body(new RespuestaDto(ConstantesUtils.STATUS_200,ConstantesUtils.MESSAGE_200));
         } else {
             return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(new RespuestaDto(ConstantesUtils.STATUS_500,ConstantesUtils.MESSAGE_500));
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new RespuestaDto(ConstantesUtils.STATUS_500, ConstantesUtils.MESSAGE_500));
         }
-
     }
-    @PutMapping("/{idListaDeReproduccion}/agregar-cancion/{idCancion}")
-    public ResponseEntity<RespuestaDto> editarCancionEnListaDeReproduccion(
+    @PutMapping("/usuario/{idUsuario}/lista/{idListaDeReproduccion}/agregar-cancion/{idCancion}")
+    public ResponseEntity<RespuestaDto> agregarCancionEnListaDeReproduccion(
+            @PathVariable(name = "idUsuario")UUID idUsuario,
             @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
             @PathVariable(name = "idCancion") UUID idCancion
     ){
-        boolean fueEditada = listaDeReproduccionService.editarCancionEnListaDeReproduccion(
+        boolean fueEditada = listaDeReproduccionService.agregarCancionEnListaDeReproduccion(
+                idUsuario,
                 idListaDeReproduccion,
                 idCancion
         );
@@ -82,14 +85,15 @@ public class ListaDeReproduccionController {
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new RespuestaDto(ConstantesUtils.STATUS_500,ConstantesUtils.MESSAGE_500));
         }
-
     }
-    @DeleteMapping("/{idListaDeReproduccion}/eliminar-cancion/{idCancion}")
+    @DeleteMapping("usuario/{idUsuario}/lista/{idListaDeReproduccion}/eliminar-cancion/{idCancion}")
     public ResponseEntity<RespuestaDto> eliminarCancionEnListaDeReproduccion(
+            @PathVariable(name = "idUsuario")UUID idUsuario,
             @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
             @PathVariable(name = "idCancion") UUID idCancion
     ){
         boolean fueEliminada = listaDeReproduccionService.eliminarCancionEnListaDeReproduccion(
+                idUsuario,
                 idListaDeReproduccion,
                 idCancion
         );

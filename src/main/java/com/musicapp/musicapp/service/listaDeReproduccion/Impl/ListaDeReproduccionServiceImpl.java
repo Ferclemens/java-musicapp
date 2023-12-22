@@ -95,21 +95,29 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
     }
 
     @Override
-    public boolean editarParametrosDeAcciones(UUID idListaDeReproduccion, ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto) {
+    public boolean editarParametrosDeAcciones(UUID idUsuario, UUID idListaDeReproduccion, ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()-> new RuntimeException("El usuario con id " + idUsuario + " no existe o no tiene permitida la edición"));
         ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
                 .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
-        ListaDeReproduccionMapper.mapToListaDeReproduccionAcciones(listaDeReproduccionAccionesDto,lista);
-        listaDeReproduccionRepository.save(lista);
+        if (!ObjectUtils.isEmpty(usuario) && !ObjectUtils.isEmpty(lista)){
+            ListaDeReproduccionMapper.mapToListaDeReproduccionAcciones(listaDeReproduccionAccionesDto,lista);
+            listaDeReproduccionRepository.save(lista);
+        } else {
+            return Boolean.FALSE;
+        }
         return Boolean.TRUE;
     }
 
     @Override
-    public boolean editarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion) {
+    public boolean agregarCancionEnListaDeReproduccion(UUID idUsuario, UUID idListaDeReproduccion, UUID idCancion) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()-> new RuntimeException("El usuario con id " + idUsuario + " no existe o no tiene permitida la edición"));
         ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
                 .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
         Cancion cancionAAgregar = cancionRepository.findById(idCancion)
                 .orElseThrow(()-> new RuntimeException("no se encontro cancion con id " + idCancion));
-        if(!ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAAgregar)){
+        if(!ObjectUtils.isEmpty(usuario) && !ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAAgregar)){
             lista.getCanciones().add(cancionAAgregar);
             listaDeReproduccionRepository.save(lista);
         } else {
@@ -119,12 +127,14 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
     }
 
     @Override
-    public boolean eliminarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion) {
+    public boolean eliminarCancionEnListaDeReproduccion(UUID idUsuario, UUID idListaDeReproduccion, UUID idCancion) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()-> new RuntimeException("El usuario con id " + idUsuario + " no existe o no tiene permitida la edición"));
         ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
                 .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
         Cancion cancionAEliminar = cancionRepository.findById(idCancion)
                 .orElseThrow(()-> new RuntimeException("no se encontro cancion con id " + idCancion));
-        if(!ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAEliminar)){
+        if(!ObjectUtils.isEmpty(usuario) && !ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAEliminar)){
             lista.getCanciones().remove(cancionAEliminar);
             listaDeReproduccionRepository.save(lista);
         } else {

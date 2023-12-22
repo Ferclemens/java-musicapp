@@ -44,18 +44,4 @@ public class UsuarioController {
                 .status(HttpStatus.OK)
                 .body(usuarioDto);
     }
-
-    @DeleteMapping("/{idUsuario}")
-    public ResponseEntity<RespuestaDto> eliminarUsuarioPorId(@PathVariable(name = "idUsuario")UUID idUsuario){
-        boolean usuarioEliminado = usuarioService.eliminarUsuarioPorId(idUsuario);
-        if(usuarioEliminado){
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(new RespuestaDto(ConstantesUtils.STATUS_200, ConstantesUtils.MESSAGE_200));
-        } else {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new RespuestaDto(ConstantesUtils.STATUS_500, ConstantesUtils.MESSAGE_500));
-        }
-    }
 }

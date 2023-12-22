@@ -17,9 +17,9 @@ public interface ListaDeReproduccionService {
 
     List<ListaDeReproduccionDetalleDto> obtenerListasDeUnUsuario(UUID idUsuario);
 
-    boolean editarParametrosDeAcciones(UUID idListaDeReproduccion, ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto);
+    boolean editarParametrosDeAcciones(UUID idUsuario, UUID idListaDeReproduccion, ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto);
 
-    boolean editarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion);
+    boolean agregarCancionEnListaDeReproduccion(UUID idUsuario, UUID idListaDeReproduccion, UUID idCancion);
 
-    boolean eliminarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion);
+    boolean eliminarCancionEnListaDeReproduccion(UUID idUsuario, UUID idListaDeReproduccion, UUID idCancion);
 }

@@ -72,13 +72,4 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioDto;
     }
 
-    @Override
-    public boolean eliminarUsuarioPorId(UUID idUsuario) {
-        Usuario usuario = usuarioRepository.findById(idUsuario)
-                .orElseThrow(()-> new RuntimeException("No se encontro usuario con id " + idUsuario));
-        listaDeReproduccionService.eliminarListas(usuario.getListaDeReproduccion());
-        usuarioRepository.delete(usuario);
-        return Boolean.TRUE;
-    }
-
 }
