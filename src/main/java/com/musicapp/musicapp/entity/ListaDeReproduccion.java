@@ -28,5 +28,8 @@ public class ListaDeReproduccion extends Auditor {
     @JoinTable(name = "listas_canciones", joinColumns = @JoinColumn(name = "lista_id"),
     inverseJoinColumns = @JoinColumn(name = "cancion_id"))
     private List<Cancion> canciones = new ArrayList<>();
+    private boolean Publica;
+    private boolean Repetir;
+    private boolean Aleatorio;
 
 }

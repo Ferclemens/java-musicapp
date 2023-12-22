@@ -54,6 +54,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         listaNueva.setCreadoPor("Admin");
         listaNueva.setCreadoEn(LocalDateTime.now());
         listaNueva.setUsuario(usuario);
+        listaNueva.setRepetir(false);
+        listaNueva.setAleatorio(false);
+        listaNueva.setPublica(true);
         List<Cancion> canciones = cancionService.crearCanciones(listaDeReproduccionDto.getCancionesDto(), new ArrayList<>());
         listaNueva.setCanciones(canciones);
         listaDeReproduccionRepository.save(listaNueva);

@@ -1,5 +1,6 @@
 package com.musicapp.musicapp.service.listaDeReproduccion.Impl;
 
+import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionAccionesDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
 import com.musicapp.musicapp.entity.Cancion;
@@ -37,6 +38,9 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
             usuario.getListaDeReproduccion().get(i).setCreadoEn(LocalDateTime.now());
             usuario.getListaDeReproduccion().get(i).setUsuario(usuario);
             usuario.getListaDeReproduccion().get(i).setCanciones(canciones);
+            usuario.getListaDeReproduccion().get(i).setAleatorio(Boolean.FALSE);
+            usuario.getListaDeReproduccion().get(i).setPublica(Boolean.TRUE);
+            usuario.getListaDeReproduccion().get(i).setRepetir(Boolean.FALSE);
             cancionService.crearCanciones(listaDeReproduccionDto.get(i).getCancionesDto(),canciones);
         }
         listaDeReproduccionRepository.saveAll(usuario.getListaDeReproduccion());
@@ -87,23 +91,13 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
         }
         return listasDelUsuarioDto;
     }
+
+    @Override
+    public boolean editarParametrosDeAcciones(UUID idListaDeReproduccion, ListaDeReproduccionAccionesDto listaDeReproduccionAccionesDto) {
+        ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
+                .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
+        ListaDeReproduccionMapper.mapToListaDeReproduccionAcciones(listaDeReproduccionAccionesDto,lista);
+        listaDeReproduccionRepository.save(lista);
+        return Boolean.TRUE;
+    }
 }
-
-//        List<ListaDeReproduccion> listas = listaDeReproduccionRepository.findAll();
-//        List<ListaDeReproduccion> listasParaMapper = new ArrayList<>();
-//        if (!ObjectUtils.isEmpty(nombre)) {
-//            for (ListaDeReproduccion lista : listas) {
-//                if (lista.getNombre().equals(nombre)) {
-//                    listasParaMapper.add(lista);
-//                }
-//            }
-//        } else {
-//            listasParaMapper = listas;
-//        }
-//        return ListaDeReproduccionMapper.mapToListasDeReproduccionDtos(listasParaMapper, new ArrayList<>());
-
-//for (ListaDeReproduccion lista: listas) {
-//        ListaDeReproduccionDto listaDto = ListaDeReproduccionMapper.mapToListaDeReproduccionDto(lista, new ListaDeReproduccionDto());
-//        listaDto.setCancionesDto(CancionMapper.mapToCancionesDto(lista.getCanciones(), new ArrayList<>()));
-//        listasDelUsuarioDto.add(listaDto);
-//        }

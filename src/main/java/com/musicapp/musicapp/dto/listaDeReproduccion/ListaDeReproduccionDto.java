@@ -9,5 +9,8 @@ import java.util.List;
 @Data
 public class ListaDeReproduccionDto {
     private String nombre;
+    private boolean Publica;
+    private boolean Repetir;
+    private boolean Aleatorio;
     private List<CancionDto> cancionesDto;
 }
