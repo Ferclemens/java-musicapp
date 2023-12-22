@@ -1,5 +1,6 @@
 package com.musicapp.musicapp.service.listaDeReproduccion.Impl;
 
+import com.musicapp.musicapp.dto.cancion.CancionDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionAccionesDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDetalleDto;
 import com.musicapp.musicapp.dto.listaDeReproduccion.ListaDeReproduccionDto;
@@ -8,6 +9,7 @@ import com.musicapp.musicapp.entity.ListaDeReproduccion;
 import com.musicapp.musicapp.entity.Usuario;
 import com.musicapp.musicapp.mapper.cancion.CancionMapper;
 import com.musicapp.musicapp.mapper.listaDeReproduccion.ListaDeReproduccionMapper;
+import com.musicapp.musicapp.repository.cancion.CancionRepository;
 import com.musicapp.musicapp.repository.listaDeReproduccion.ListaDeReproduccionRepository;
 import com.musicapp.musicapp.repository.usuario.UsuarioRepository;
 import com.musicapp.musicapp.service.cancion.CancionService;
@@ -27,6 +29,7 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
     private final ListaDeReproduccionRepository listaDeReproduccionRepository;
     private final CancionService cancionService;
     private final UsuarioRepository usuarioRepository;
+    private final CancionRepository cancionRepository;
 
     @Override
     public void crearListasDeReproduccion(List<ListaDeReproduccionDto> listaDeReproduccionDto, Usuario usuario) {
@@ -98,6 +101,36 @@ public class ListaDeReproduccionServiceImpl implements ListaDeReproduccionServic
                 .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
         ListaDeReproduccionMapper.mapToListaDeReproduccionAcciones(listaDeReproduccionAccionesDto,lista);
         listaDeReproduccionRepository.save(lista);
+        return Boolean.TRUE;
+    }
+
+    @Override
+    public boolean editarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion) {
+        ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
+                .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
+        Cancion cancionAAgregar = cancionRepository.findById(idCancion)
+                .orElseThrow(()-> new RuntimeException("no se encontro cancion con id " + idCancion));
+        if(!ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAAgregar)){
+            lista.getCanciones().add(cancionAAgregar);
+            listaDeReproduccionRepository.save(lista);
+        } else {
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
+    }
+
+    @Override
+    public boolean eliminarCancionEnListaDeReproduccion(UUID idListaDeReproduccion, UUID idCancion) {
+        ListaDeReproduccion lista = listaDeReproduccionRepository.findById(idListaDeReproduccion)
+                .orElseThrow(()-> new RuntimeException("No se encontro lista con id " + idListaDeReproduccion));
+        Cancion cancionAEliminar = cancionRepository.findById(idCancion)
+                .orElseThrow(()-> new RuntimeException("no se encontro cancion con id " + idCancion));
+        if(!ObjectUtils.isEmpty(lista) && !ObjectUtils.isEmpty(cancionAEliminar)){
+            lista.getCanciones().remove(cancionAEliminar);
+            listaDeReproduccionRepository.save(lista);
+        } else {
+            return Boolean.FALSE;
+        }
         return Boolean.TRUE;
     }
 }

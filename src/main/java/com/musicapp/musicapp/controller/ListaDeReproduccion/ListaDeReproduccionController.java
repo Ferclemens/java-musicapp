@@ -64,4 +64,43 @@ public class ListaDeReproduccionController {
         }
 
     }
+    @PutMapping("/{idListaDeReproduccion}/agregar-cancion/{idCancion}")
+    public ResponseEntity<RespuestaDto> editarCancionEnListaDeReproduccion(
+            @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
+            @PathVariable(name = "idCancion") UUID idCancion
+    ){
+        boolean fueEditada = listaDeReproduccionService.editarCancionEnListaDeReproduccion(
+                idListaDeReproduccion,
+                idCancion
+        );
+        if (fueEditada){
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(new RespuestaDto(ConstantesUtils.STATUS_200,ConstantesUtils.MESSAGE_200));
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new RespuestaDto(ConstantesUtils.STATUS_500,ConstantesUtils.MESSAGE_500));
+        }
+
+    }
+    @DeleteMapping("/{idListaDeReproduccion}/eliminar-cancion/{idCancion}")
+    public ResponseEntity<RespuestaDto> eliminarCancionEnListaDeReproduccion(
+            @PathVariable(name = "idListaDeReproduccion") UUID idListaDeReproduccion,
+            @PathVariable(name = "idCancion") UUID idCancion
+    ){
+        boolean fueEliminada = listaDeReproduccionService.eliminarCancionEnListaDeReproduccion(
+                idListaDeReproduccion,
+                idCancion
+        );
+        if (fueEliminada){
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(new RespuestaDto(ConstantesUtils.STATUS_200,ConstantesUtils.MESSAGE_200));
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new RespuestaDto(ConstantesUtils.STATUS_500, ConstantesUtils.MESSAGE_500));
+        }
+    }
 }
