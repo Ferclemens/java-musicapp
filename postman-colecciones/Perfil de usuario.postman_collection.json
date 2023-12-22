@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "29da67d9-b7c6-419b-ade7-ba5a4a4a9493",
+		"name": "Perfil de usuario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17727759"
+	},
+	"item": [
+		{
+			"name": "Crear usuario1 con listas de reproducción",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Fernando\",\r\n    \"usuario\":\"Usuario1\",\r\n    \"listaDeReproduccionDto\":[\r\n        {\r\n            \"nombre\":\"Lista para el 24\",\r\n            \"cancionesDto\":[\r\n                {\r\n                    \"nombre\":\"Lo mejor del amor\",\r\n                    \"artista\":\"Rodrigo\",\r\n                    \"genero\":\"Cuarteto\",\r\n                    \"ranking\":1,\r\n                    \"duracion\":3.45,\r\n                    \"album\":\"Lo Mejor Del Amor\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Puño de diamante\",\r\n                    \"artista\":\"Grupo Kopa2\",\r\n                    \"genero\":\"Cumbia\",\r\n                    \"ranking\":6,\r\n                    \"duracion\":1.9,\r\n                    \"album\":\"Los Mejores de Kopa2\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Novios cruzados\",\r\n                    \"artista\":\"Los Continuados\",\r\n                    \"genero\":\"Cumbia\",\r\n                    \"ranking\":4,\r\n                    \"duracion\":2.3,\r\n                    \"album\":\"Nacional\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Padre nuestro\",\r\n                    \"artista\":\"Los Fabulosos Cadillacs\",\r\n                    \"genero\":\"Cumbia\",\r\n                    \"ranking\":2,\r\n                    \"duracion\":2.3,\r\n                    \"album\":\"La luz del Ritmo\"        \r\n                }  \r\n            ]\r\n        },\r\n        {\r\n            \"nombre\":\"Chill\",\r\n            \"cancionesDto\":[\r\n                {\r\n                    \"nombre\":\"Just jammin\",\r\n                    \"artista\":\"Gramatik\",\r\n                    \"genero\":\"Hip hop\",\r\n                    \"ranking\":3,\r\n                    \"duracion\":3.45,\r\n                    \"album\":\"SB2\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Instant Need\",\r\n                    \"artista\":\"FKJ\",\r\n                    \"genero\":\"Chill\",\r\n                    \"ranking\":7,\r\n                    \"duracion\":4.5,\r\n                    \"album\":\"Time for a Change\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Moon Theory\",\r\n                    \"artista\":\"Miami Horror\",\r\n                    \"genero\":\"Funk\",\r\n                    \"ranking\":9,\r\n                    \"duracion\":2.3,\r\n                    \"album\":\"Illumination\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Verdis Quo\",\r\n                    \"artista\":\"Daft Punk\",\r\n                    \"genero\":\"Funk\",\r\n                    \"ranking\":8,\r\n                    \"duracion\":5.75,\r\n                    \"album\":\"Discovery\"        \r\n                } \r\n            ]\r\n        }\r\n    ] \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario2 con 1 lista de reproducción",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Iorio\",\r\n    \"usuario\":\"Usuario2\",\r\n    \"listaDeReproduccionDto\":[\r\n        {\r\n            \"nombre\":\"Metal Argento\",\r\n            \"cancionesDto\":[\r\n                {\r\n                    \"nombre\":\"Otro dia para ser\",\r\n                    \"artista\":\"Hermética\",\r\n                    \"genero\":\"Metal\",\r\n                    \"ranking\":1,\r\n                    \"duracion\":3.45,\r\n                    \"album\":\"Víctimas del vaciamiento\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Víctimas del vaciamiento\",\r\n                    \"artista\":\"Hermética\",\r\n                    \"genero\":\"Metal\",\r\n                    \"ranking\":6,\r\n                    \"duracion\":1.9,\r\n                    \"album\":\"Hermética\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Sé vos\",\r\n                    \"artista\":\"Almafuerte\",\r\n                    \"genero\":\"Metal\",\r\n                    \"ranking\":4,\r\n                    \"duracion\":2.3,\r\n                    \"album\":\"Almafuerte\"        \r\n                },\r\n                {\r\n                    \"nombre\":\"Tú eres su seguridad\",\r\n                    \"artista\":\"Almafuerte\",\r\n                    \"genero\":\"Metal\",\r\n                    \"ranking\":2,\r\n                    \"duracion\":2.3,\r\n                    \"album\":\"Almafuerte\"        \r\n                }  \r\n            ]\r\n        }\r\n    ] \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario3 sin listas de reproducción",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Usuario Nuevo\",\r\n    \"usuario\":\"Usuario3\",\r\n    \"listaDeReproduccionDto\":[]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener usuario por id con detalle de listas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/0d334edc-fd02-4216-b746-0927709c507e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"0d334edc-fd02-4216-b746-0927709c507e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "cd0ed356-839a-49d7-987b-9d0e6e50c869",
+		"name": "Listas de reproducción",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17727759"
+	},
+	"item": [
+		{
+			"name": "Obtener listas de reproducción de un usuario por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/5b20728c-092c-484b-95f0-ba49dd617c7e\t/listas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"listasDeReproduccion",
+						"5b20728c-092c-484b-95f0-ba49dd617c7e\t",
+						"listas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener canciones de una lista de reproducción por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/87e04d2d-ac22-4521-ae83-16a142defd7b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"listasDeReproduccion",
+						"87e04d2d-ac22-4521-ae83-16a142defd7b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear lista de reproducción",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"nombre\":\"Punk Argento\",\r\n    \"cancionesDto\":[\r\n        {\r\n            \"nombre\":\"Diga 33\",\r\n            \"artista\":\"Aliento de Perro\",\r\n            \"genero\":\"Punk\",\r\n            \"ranking\":2,\r\n            \"duracion\":3.45,\r\n            \"album\":\"Se escucha mal, se escucha mal\"        \r\n        },\r\n        {\r\n            \"nombre\":\"Norma punk\",\r\n            \"artista\":\"Antiestéticos\",\r\n            \"genero\":\"Punk\",\r\n            \"ranking\":1000,\r\n            \"duracion\":2.5,\r\n            \"album\":\"Disculpe las molestias\"        \r\n        },\r\n        {\r\n            \"nombre\":\"Como caramelo de limón\",\r\n            \"artista\":\"Dos Minutos\",\r\n            \"genero\":\"Punk\",\r\n            \"ranking\":1,\r\n            \"duracion\":2.0,\r\n            \"album\":\"Valentin Alsina\"        \r\n        },\r\n        {\r\n            \"nombre\":\"De más\",\r\n            \"artista\":\"Cadena Perpetua\",\r\n            \"genero\":\"Punk\",\r\n            \"ranking\":3,\r\n            \"duracion\":3.1,\r\n            \"album\":\"Malas Costumbres\"        \r\n        },\r\n        {\r\n            \"nombre\":\"A donde fuiste\",\r\n            \"artista\":\"Mal Momento\",\r\n            \"genero\":\"Punk\",\r\n            \"ranking\":7,\r\n            \"duracion\":2.8,\r\n            \"album\":\"Mal Momento\"        \r\n        },\r\n        {\r\n            \"nombre\":\"She Runaway\",\r\n            \"artista\":\"Boom Boom Kid\",\r\n            \"genero\":\"Punk\",\r\n            \"ranking\":9,\r\n            \"duracion\":3.8,\r\n            \"album\":\"Smiles from Chapanoland\"        \r\n        }  \r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/54e947fe-c0f0-4e89-bfab-f76cfe544d58",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"54e947fe-c0f0-4e89-bfab-f76cfe544d58"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar parametros de acciones",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publica\": false,\r\n    \"aleatorio\": true,\r\n    \"repetir\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/535ef7c5-e9ec-48af-8df7-7ea5fae56a1e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"listasDeReproduccion",
+						"535ef7c5-e9ec-48af-8df7-7ea5fae56a1e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar canción existente a lista existente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/7691b3f9-6ff4-4de1-b416-c03d30bce557/agregar-cancion/0f291b3c-0b6f-4ad8-928a-9e3e2e49fccc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"listasDeReproduccion",
+						"7691b3f9-6ff4-4de1-b416-c03d30bce557",
+						"agregar-cancion",
+						"0f291b3c-0b6f-4ad8-928a-9e3e2e49fccc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar cancion existente en lista existente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/listasDeReproduccion/7691b3f9-6ff4-4de1-b416-c03d30bce557/eliminar-cancion/0f291b3c-0b6f-4ad8-928a-9e3e2e49fccc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"listasDeReproduccion",
+						"7691b3f9-6ff4-4de1-b416-c03d30bce557",
+						"eliminar-cancion",
+						"0f291b3c-0b6f-4ad8-928a-9e3e2e49fccc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
